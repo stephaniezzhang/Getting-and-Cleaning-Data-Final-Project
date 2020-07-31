@@ -1,6 +1,8 @@
 # Getting-and-Cleaning-Data-Final-Project
 
-This is for the final project of the course Getting and Cleaning Data.
+This is for the final project of the course Getting and Cleaning Data. Data from a smartphone sensor
+was cleaned and prepared for analysis. More information on the study and devices used can be found
+here: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 Files included:
 test and train
@@ -14,5 +16,3 @@ add details.
 tidyData.txt
 Final output from run_analysis
 
-For more information about variables, the original documentation includes variable names
-and measurement information. These documents include features.txt and features_info.txt

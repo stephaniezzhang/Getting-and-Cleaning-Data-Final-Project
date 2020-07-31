@@ -3,6 +3,7 @@ download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUC
               "./Getting and Cleaning Data Course Project")
 unzip("Getting and Cleaning Data Course Project")
 setwd("./UCI HAR Dataset")
+library(data.table)
 
 #Reading data into R and labelling columns to prepare for merging, sorting and formatting later
 subject_test<-read.table("./test/subject_test.txt")
@@ -42,6 +43,32 @@ all_data$activity[all_data$activity==3]="WALKING_DOWNSTAIRS"
 all_data$activity[all_data$activity==4]="SITTING"
 all_data$activity[all_data$activity==5]="STANDING"
 all_data$activity[all_data$activity==6]="LAYING"
+
+#create more descriptive variable names
+colNameAllData<-colnames(all_data)> colNameAllData<-gsub("^t", "timeDomain", colNameAllData)
+colNameAllData<-gsub("^f", "frequencyDomain", colNameAllData)
+colNameAllData<-gsub("std()", "standardDeviation", colNameAllData)
+colNameAllData<-gsub("mean()", "mean", colNameAllData)
+colNameAllData<-gsub("mad()", "medianAbsoluteDeviation", colNameAllData)
+colNameAllData<-gsub("max()", "maximumArrayValue", colNameAllData)
+colNameAllData<-gsub("min()", "minimumArrayValue", colNameAllData)
+colNameAllData<-gsub("sma()", "signalMagnitudeArea", colNameAllData)
+colNameAllData<-gsub("energy()", "energyMeasure", colNameAllData)
+colNameAllData<-gsub("iqr()", "interquartileRange", colNameAllData)
+colNameAllData<-gsub("entropy()", "signalEntropy", colNameAllData)
+colNameAllData<-gsub("arCoeff()", "autorregresionCoefficient", colNameAllData)
+colNameAllData<-gsub("correlation()", "correlation", colNameAllData)
+colNameAllData<-gsub("maxInds()", "largestMagnitudeFrequency", colNameAllData)
+colNameAllData<-gsub("meanFreq()", "meanFrequency", colNameAllData)
+colNameAllData<-gsub("skewness()", "skewness", colNameAllData)
+colNameAllData<-gsub("kurtosis()", "kurtosis", colNameAllData)
+colNameAllData<-gsub("bandsEnergy()", "frequencyIntervalEnergy", colNameAllData)
+colNameAllData<-gsub("angle()", "angle", colNameAllData)
+colNameAllData<-gsub("Acc", "Accelerometer", colNameAllData)
+colNameAllData<-gsub("Gyro", "Gyroscope", colNameAllData)
+colNameAllData<-gsub("Mag", "Magnitude", colNameAllData)
+colNameAllData<-gsub("BodyBody", "Body", colNameAllData)
+colnames(all_data)<-colNameAllData
 
 #creating the final tidy dataset
 tidyData<-all_data #creating a copy of all_data to manipulate 
